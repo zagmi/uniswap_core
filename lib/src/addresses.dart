@@ -1,7 +1,5 @@
 import 'chains.dart';
 
-typedef AddressMap = Map<ChainId, String>;
-
 class ChainAddresses {
   final String v3CoreFactoryAddress;
   final String multicallAddress;
@@ -26,7 +24,7 @@ class ChainAddresses {
 
 final List<ChainId> defaultNetworks = [ChainId.mainnet, ChainId.goerli];
 
-AddressMap constructSameAddressMap(String address,
+Map<ChainId, String> constructSameAddressMap(String address,
     [List<ChainId> additionalNetworks = const []]) {
   var addressMap = <ChainId, String>{};
 
@@ -193,3 +191,138 @@ final ChainAddresses baseGoerliAddresses = ChainAddresses(
   tickLensAddress: '0x1acB873Ee909D0c98adB18e4474943249F931b92',
   swapRouter02Address: '0x8357227D4eDc78991Db6FDB9bD6ADE250536dE1d',
 );
+
+final Map<ChainId, ChainAddresses> chainToAddressesMap = {
+  ChainId.mainnet: mainnetAddresses,
+  ChainId.optimism: optimismAddresses,
+  ChainId.arbitrOne: arbitrumOneAddresses,
+  ChainId.polygon: polygonAddresses,
+  ChainId.polygonMumbai: polygonAddresses,
+  ChainId.goerli: goerliAddresses,
+  ChainId.celo: celoAddresses,
+  ChainId.celoAlfajores: celoAddresses,
+  ChainId.bnb: bnbAddresses,
+  ChainId.optimismGoerli: optimismGoerliAddresses,
+  ChainId.arbitrGoerli: arbitrumGoerliAddresses,
+  ChainId.sepolia: sepoliaAdresses,
+  ChainId.avalanche: avalancheAdresses,
+  ChainId.base: baseAddresses,
+  ChainId.baseGoerli: baseGoerliAddresses,
+};
+
+/// V3 Contract Addresses
+final Map<ChainId, String> v3CoreFactoryAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    memo[chainId] = chainToAddressesMap[chainId]!.v3CoreFactoryAddress;
+    return memo;
+  },
+);
+
+final Map<ChainId, String> v3MigratorAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    final v3MigratorAddress = chainToAddressesMap[chainId]!.v3MigratorAddress;
+    if (v3MigratorAddress != null) {
+      memo[chainId] = v3MigratorAddress;
+    }
+    return memo;
+  },
+);
+
+final Map<ChainId, String> multicallAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    memo[chainId] = chainToAddressesMap[chainId]!.multicallAddress;
+    return memo;
+  },
+);
+
+/// The oldest V0 governance address
+final governanceAlphaV0Addresses =
+    constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F');
+
+/// The older V1 governance address
+final governanceAlphaV1Addresses = {
+  [ChainId.mainnet]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6'
+};
+
+/// The latest governor bravo that is currently admin of timelock
+final governanceBravoAddresses = {
+  [ChainId.mainnet]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3'
+};
+
+final timelockAddresses =
+    constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC');
+
+final merkleDistributorAddress = {
+  [ChainId.mainnet]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
+};
+
+final argentWalletDetectorAddress = {
+  [ChainId.mainnet]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8'
+};
+
+final Map<ChainId, String> quoterAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    memo[chainId] = chainToAddressesMap[chainId]!.quoterAddress;
+    return memo;
+  },
+);
+
+final Map<ChainId, String> nonfungiblePositionManagerAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    final nonfungiblePositionManagerAddress =
+        chainToAddressesMap[chainId]!.nonfungiblePositionManagerAddress;
+    if (nonfungiblePositionManagerAddress != null) {
+      memo[chainId] = nonfungiblePositionManagerAddress;
+    }
+    return memo;
+  },
+);
+
+final ensRegistrarAddresses =
+    constructSameAddressMap('0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e');
+
+const socksControllerAddresses = {
+  [ChainId.mainnet]: '0x65770b5283117639760beA3F867b69b3697a91dd'
+};
+
+final Map<ChainId, String> tickLensAddresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    final tickLensAddress = chainToAddressesMap[chainId]!.tickLensAddress;
+    if (tickLensAddress != null) {
+      memo[chainId] = tickLensAddress;
+    }
+    return memo;
+  },
+);
+
+final Map<ChainId, String> mixedRouteQuoterV1Addresses =
+    supportedChains.fold<Map<ChainId, String>>(
+  {},
+  (memo, chainId) {
+    final v1MixedRouteQuoterAddress =
+        chainToAddressesMap[chainId]!.v1MixedRouteQuoterAddress;
+    if (v1MixedRouteQuoterAddress != null) {
+      memo[chainId] = v1MixedRouteQuoterAddress;
+    }
+    return memo;
+  },
+);
+
+String swapRouter02Addresses(ChainId chainId) {
+  if (chainId == ChainId.bnb) {
+    return chainToAddressesMap[chainId]!.swapRouter02Address!;
+  }
+  return '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45';
+}
