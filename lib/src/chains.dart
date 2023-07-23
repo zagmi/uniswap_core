@@ -1,100 +1,108 @@
 enum ChainId {
-  MAINNET,
-  GOERLI,
-  SEPOLIA,
-  OPTIMISM,
-  OPTIMISM_GOERLI,
-  ARBITRUM_ONE,
-  ARBITRUM_GOERLI,
-  POLYGON,
-  POLYGON_MUMBAI,
-  CELO,
-  CELO_ALFAJORES,
-  GNOSIS,
-  MOONBEAM,
-  BNB,
-  AVALANCHE,
-  BASE_GOERLI,
-  BASE
+  mainnet,
+  goerli,
+  sepolia,
+  optimism,
+  optimismGoerli,
+  arbitrOne,
+  arbitrGoerli,
+  polygon,
+  polygonMumbai,
+  celo,
+  celoAlfajores,
+  gnosis,
+  moonbeam,
+  bnb,
+  avalanche,
+  baseGoerli,
+  base,
 }
 
 extension ChainIdExtension on ChainId {
   int get value {
     switch (this) {
-      case ChainId.MAINNET:
+      case ChainId.mainnet:
         return 1;
-      case ChainId.GOERLI:
+      case ChainId.goerli:
         return 5;
-      case ChainId.SEPOLIA:
+      case ChainId.sepolia:
         return 11155111;
-      case ChainId.OPTIMISM:
+      case ChainId.optimism:
         return 10;
-      case ChainId.OPTIMISM_GOERLI:
+      case ChainId.optimismGoerli:
         return 420;
-      case ChainId.ARBITRUM_ONE:
+      case ChainId.arbitrOne:
         return 42161;
-      case ChainId.ARBITRUM_GOERLI:
+      case ChainId.arbitrGoerli:
         return 421613;
-      case ChainId.POLYGON:
+      case ChainId.polygon:
         return 137;
-      case ChainId.POLYGON_MUMBAI:
+      case ChainId.polygonMumbai:
         return 80001;
-      case ChainId.CELO:
+      case ChainId.celo:
         return 42220;
-      case ChainId.CELO_ALFAJORES:
+      case ChainId.celoAlfajores:
         return 44787;
-      case ChainId.GNOSIS:
+      case ChainId.gnosis:
         return 100;
-      case ChainId.MOONBEAM:
+      case ChainId.moonbeam:
         return 1284;
-      case ChainId.BNB:
+      case ChainId.bnb:
         return 56;
-      case ChainId.AVALANCHE:
+      case ChainId.avalanche:
         return 43114;
-      case ChainId.BASE_GOERLI:
+      case ChainId.baseGoerli:
         return 84531;
-      case ChainId.BASE:
+      case ChainId.base:
         return 8453;
     }
   }
 }
 
-List<ChainId> SUPPORTED_CHAINS = [
-  ChainId.MAINNET,
-  ChainId.OPTIMISM,
-  ChainId.OPTIMISM_GOERLI,
-  ChainId.ARBITRUM_ONE,
-  ChainId.ARBITRUM_GOERLI,
-  ChainId.POLYGON,
-  ChainId.POLYGON_MUMBAI,
-  ChainId.GOERLI,
-  ChainId.SEPOLIA,
-  ChainId.CELO_ALFAJORES,
-  ChainId.CELO,
-  ChainId.BNB,
-  ChainId.AVALANCHE,
-  ChainId.BASE,
-  ChainId.BASE_GOERLI
+List<ChainId> supportedChains = [
+  ChainId.mainnet,
+  ChainId.optimism,
+  ChainId.optimismGoerli,
+  ChainId.arbitrOne,
+  ChainId.arbitrGoerli,
+  ChainId.polygon,
+  ChainId.polygonMumbai,
+  ChainId.goerli,
+  ChainId.sepolia,
+  ChainId.celoAlfajores,
+  ChainId.celo,
+  ChainId.bnb,
+  ChainId.avalanche,
+  ChainId.base,
+  ChainId.baseGoerli,
 ];
 
-enum NativeCurrencyName { ETHER, MATIC, CELO, GNOSIS, MOONBEAM, BNB, AVAX }
+enum NativeCurrencyName {
+  ether,
+  matic,
+  celo,
+  gnosis,
+  moonbeam,
+  bnb,
+  avax,
+}
 
 extension NativeCurrencyNameExtension on NativeCurrencyName {
   String get value {
     switch (this) {
-      case NativeCurrencyName.ETHER:
+      case NativeCurrencyName.ether:
         return 'ETH';
-      case NativeCurrencyName.MATIC:
+      case NativeCurrencyName.matic:
         return 'MATIC';
-      case NativeCurrencyName.CELO:
+      case NativeCurrencyName.celo:
         return 'CELO';
-      case NativeCurrencyName.GNOSIS:
+      case NativeCurrencyName.gnosis:
         return 'XDAI';
-      case NativeCurrencyName.MOONBEAM:
+      case NativeCurrencyName.moonbeam:
         return 'GLMR';
-      case NativeCurrencyName.BNB:
+      case NativeCurrencyName.bnb:
         return 'BNB';
-      case NativeCurrencyName.AVAX:
+      case NativeCurrencyName.avax:
         return 'AVAX';
     }
   }
