@@ -1,7 +1,7 @@
 import 'package:tiny_invariant/tiny_invariant.dart';
 import 'package:uniswap_core/src/entities/native_currency.dart';
 import 'base_currency.dart';
-import '../utils/utils.dart';
+import '../utils/validateAndParseAddress.dart';
 
 /// Represents an ERC20 token with a unique address and some metadata.
 class Token extends BaseCurrency {
