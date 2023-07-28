@@ -1,4 +1,5 @@
 import 'package:tiny_invariant/tiny_invariant.dart';
+import 'package:uniswap_core/src/entities/native_currency.dart';
 import 'base_currency.dart';
 import '../utils/utils.dart';
 
@@ -40,7 +41,8 @@ class Token extends BaseCurrency {
   }
 
   /// Returns true if the two tokens are equivalent, i.e. have the same chainId and address.
-  bool equals(Currency other) {
+  bool equals(other) {
+    invariant(NativeCurrency == other && Token == other, "TYPES");
     return other.isToken &&
         this.chainId == other.chainId &&
         this.address.toLowerCase() == other.address.toLowerCase();

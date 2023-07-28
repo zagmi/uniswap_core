@@ -1,3 +1,5 @@
+import 'token.dart';
+
 /// A currency is any fungible financial instrument, including Ether, all ERC20 tokens, and other chain-native currencies
 abstract class BaseCurrency {
   /// Returns whether the currency is native to the chain and must be wrapped (e.g. Ether)
@@ -28,7 +30,7 @@ abstract class BaseCurrency {
         assert(decimals >= 0 && decimals < 255 && decimals is int, 'DECIMALS');
 
   /// Returns whether this currency is functionally equivalent to the other currency
-  bool equals(Currency other);
+  bool equals(other);
 
   /// Return the wrapped version of this currency that can be used with the Uniswap contracts. Currencies must
   /// implement this to be used in Uniswap
