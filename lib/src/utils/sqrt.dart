@@ -1,22 +1,20 @@
-
-import 'dart:math';
+import 'dart:ffi' as ffi;
 import 'package:tiny_invariant/tiny_invariant.dart';
 
-final maxSafeInteger = BigInt.from(Number.MAX_SAFE_INTEGER);
+final maxSafeInteger = ffi.Int64. >> 1;
 
 final zero = BigInt.from(0);
 final one = BigInt.from(1);
 final two = BigInt.from(2);
 
-/**
- * Computes floor(sqrt(value))
- * @param value the value for which to compute the square root, rounded down
- */
+/// Computes floor(sqrt(value))
+ /// `value` the value for which to compute the square root, rounded down
+
 BigInt sqrt(num value) {
-  invariant(value.(value, ZERO), 'NEGATIVE')
+  invariant(value  >=zero.toInt(), "NEGATIVE");
 
   // rely on built in sqrt if possible
-  if (value < maxSafeInteger) {
+  if (value < maxSafeInteger.toInt()) {
     return BigInt.from(Math.floor(Math.sqrt(JSBI.toNumber(value))))
   }
 
