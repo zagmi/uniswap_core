@@ -8,22 +8,22 @@ final one = BigInt.from(1);
 final two = BigInt.from(2);
 
 /// Computes floor(sqrt(value))
- /// `value` the value for which to compute the square root, rounded down
-
+/// `value` the value for which to compute the square root, rounded down
 BigInt sqrt(BigInt value) {
-  invariant(value  >=zero, "NEGATIVE");
+  invariant(value >= zero, "NEGATIVE");
   // rely on built in sqrt if possible
   if (value < maxSafeInteger) {
-    return BigInt.from(Math.floor(Math.sqrt(JSBI.toNumber(value))))
+    return BigInt.from((math.sqrt(num.parse(value.toString())).floor()));
   }
 
   BigInt z;
   BigInt x;
   z = value;
-  x = (BigInt.from(value) / two) + one;
+  x = ((value / two) + num.parse(one.toString())) as BigInt;
   while (x < z) {
     z = x;
-    x = JSBI.divide(JSBI.add(JSBI.divide(value, x), x), TWO);
+    x = (((value / x) + num.parse(x.toString())) / num.parse(two.toString()))
+        as BigInt;
   }
   return z;
 }
