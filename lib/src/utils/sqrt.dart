@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:tiny_invariant/tiny_invariant.dart';
 
-final maxSafeInteger = BigInt.from(math.pow(2, 53)) - BigInt.one;
+final maxSafeInteger = BigInt.from(2^53 - 1);
 
 final zero = BigInt.from(0);
 final one = BigInt.from(1);
