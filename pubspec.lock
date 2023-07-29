@@ -137,14 +137,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  dotenv:
-    dependency: transitive
-    description:
-      name: dotenv
-      sha256: e169b516bc7b88801919e1c508772bcb8e3d0d1776a43f74ab692c57e741cd8a
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.0"
   file:
     dependency: transitive
     description:
@@ -453,10 +445,10 @@ packages:
     dependency: "direct main"
     description:
       name: tiny_invariant
-      sha256: c54d971287771d5be773ac89866ee8face3865cdd242ae1101971bd97c1727af
+      sha256: "30367c9594de725151cfc7970db10f85a805b99970480a9492866ac991520ada"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0+1"
+    version: "1.0.0+2"
   typed_data:
     dependency: transitive
     description:
@@ -522,4 +514,4 @@ packages:
     source: hosted
     version: "0.0.1+1"
 sdks:
-  dart: ">=3.0.1 <3.1.0"
+  dart: ">=3.0.1 <3.3.0"
