@@ -9,8 +9,8 @@ abstract class NativeCurrency extends BaseCurrency {
   final bool isToken = false;
 
   NativeCurrency({
-    required int chainId,
-    required int decimals,
+    required num chainId,
+    required num decimals,
     String? symbol,
     String? name,
   }) : super(
